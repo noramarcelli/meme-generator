@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NnA</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="my-style.css">
+</head>
+
+<body>
+    <div class="preload-fonts">
+        <span style="font-family: 'ColorYourWorld'"></span>
+        <span style="font-family: 'JellyCrazies'"></span>
+        <span style="font-family: 'PoptyPing'"></span>
+        <span style="font-family: 'angrybirds'"></span>
+    </div>
+    <header>
+        <div class="container header-container flex space-between align-center">
+            <h1 class="logo header-logo">NA &nbsp; - &nbsp; Memes</h1>
+            <!-- <button class="hamburger" onclick="toggleMenu()">
+                        <i class="burger"></i>
+                        <i class="close"></i></button> -->
+            <nav class="nav-container">
+                <ul class="main-menu clean-list flex" id="mainMenu">
+                    <li>
+                        <a href="#image-container">create a meme</a>
+                    </li>
+                    <li>
+                        <a href="#about">about</a>
+                    </li>
+                    <li>
+                        <a href="#get-in-touch">get in touch</a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+
+    </header>
+
+    <main>
+        <div class="search"></div>
+        <label for="text">search for...</label>
+        <input type="search" name="search tags" placeholder="search for keywords/tags" onkeyup="searchItem(this.value)">
+        <div class="container useful-keywords-container"></div>
+        <section id="image-container" class="container image-container"></section>
+        <section id="about" class="about-container">
+            <div class="container flex">
+                <img class="profile-img" src="img/our-profile.jpg" alt="">
+                <div class="about-us">
+                    <h1>
+                        Amit  &nbsp; and &nbsp; Nora
+                    </h1>
+                    <!-- <h3>
+                        Web Developers
+                    </h3> -->
+                    <p>Hello everyone! We're students at the "Coding Academy" bootcamp programfor web developers, and we're making awsome apps and games. Both of us are coming form online marketing industry and also know how to sell you our product ;) Just wanted to tell you that We are the best!!</p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <section id="get-in-touch" class="container contact-container">
+            <h1 class="brand"></h1>
+            <div class="wrapper">
+                <div class="about-us">
+                    <h3>Amit Livne</h3>
+                    <ul>
+                        <li>
+                            <i class="fa fa-envelope"></i> amitush.l@gmail.com</li>
+                        <li></li>
+                        <i class="fa fa-phone"></i> +972-54-7215010</li>
+                    </ul>
+                    <h3>Nora Marcelli</h3>
+                    <ul>
+                        <li>
+                            <i class="fa fa-envelope"></i> noramarcelli@gmail.com</li>
+                        <li></li>
+                        <i class="fa fa-phone"></i> +972-54-5588624</li>
+                    </ul>
+                </div>
+                <div class="contact">
+                    <h1>contact &nbsp; us</h1>
+                    <form>
+                        <p>
+                            <label>Name</label>
+                            <input type="text" placeholder="Your full name" name="name">
+                        </p>
+                        <p>
+                            <label>eMail</label>
+                            <input type="email" placeholder="name@example.com" name="eMail">
+                        </p>
+                        <p>
+                            <label>Phone number</label>
+                            <input type="text" name="Phone">
+                        </p>
+                        <p class="full">
+                            <label>Message</label>
+                            <textarea name="message" rows="5" placeholder="Type message here"></textarea>
+                        </p>
+                        <p class="full">
+                            <button>Submit</button>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+
+    <div id="clickedImageModal" class="modal-wrapper">
+        <div class="modal">
+            <canvas id="image-canvas">
+                Update your browser to enjoy canvas!
+            </canvas>
+            <div class="meme-editor-area">
+                <a class="btn close" onclick="toggleModal()"><i class="fa fa-window-close-o"></i></a>
+                <form class="first-title">
+                    <!-- <label for="title" placeholder="Type your text here"></label> -->
+                    <input type="text" placeholder="Type your text here" onkeyup="printTxt2Canvas(this, 0)" required class="text-to-add">
+                    <div class="move-btns">
+                        <label for="move">move text: </label>
+                        <span class="arrow" onclick="moveText('xCoord', -1)"><i class="fa fa-chevron-circle-left"></i></span>
+                        <span class="arrow" onclick="moveText('xCoord', 1)"><i class="fa fa-chevron-circle-right"></i></span>
+                        <span class="arrow" onclick="moveText('yCoord', -1)"><i class="fa fa-chevron-circle-up"></i></span>
+                        <span class="arrow" onclick="moveText('yCoord', 1)"><i class="fa fa-chevron-circle-down"></i></span>
+                    </div>
+                    
+                    <div class="pick-color flex">
+                        <label for="move">Pick a color &nbsp;</label>
+                        <input class="color" placeholder="color" type="color" name="favcolor" onchange="changeColor(this)">
+                    </div>
+                    
+                    <div class="font-style">
+                        <label class"font" for="font">Font Style </label>
+                        <select onchange="changeFont(this)">
+                            <option value="ColorYourWorld">Color Your World</option>
+                            <option value="Arial">Arial</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Impact">Impact</option>
+                            <option value="angrybirds">Angry Birds</option>
+                            <option value="JellyCrazies">Jelly Crazies</option>
+                            <option value="PoptyPing">Popty Ping</option>
+                        </select>
+                    </div>
+
+                    <div class="font-size flex">
+                        <label for="fontSize ">Font Size &nbsp;</label>
+                        <input class="size" type="range" id="font-size" name="fontSize" min="8" max="100" value="20" onchange="showFontSize(this)"/>
+                    </div>  
+
+                    <!-- <div>
+                        <label for="imgFiles">Select images:</label>
+                        <input class="file" type="file" id="imgFiles" name="imgFiles" onchange="handleImage(event)" />
+                    </div>  -->
+                    <input type="text" placeholder="Type your text here" onkeyup="printTxt2Canvas(this, 1)" required class="text-to-add">
+                    <!-- <div class="second-title">
+                        <label for="title">second title</label>
+                        <input type="text" placeholder="Your title is here"> Select a color:
+                        <input type="color" name="favcolor" value="#92bde7">
+                    </div>  -->
+                </form>
+                <div class="modal-btns">
+                    <button class="btn" onclick="toggleModal()">Pick another</button>
+                    <a class="btn download" id="download" download="myMeme.png" onclick="downloadMeme(this)"><i class="fa fa-download"> Download</i></a>
+                    <!-- <button class="btn download" onclick="downloadMeme(this, 'image-canvas', myMeme)" download="myMeme.png">Download</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
