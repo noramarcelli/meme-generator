@@ -21,18 +21,18 @@
     <header>
         <div class="container header-container flex space-between align-center">
             <h1 class="logo header-logo">NA &nbsp; - &nbsp; Memes</h1>
-            <!-- <button class="hamburger" onclick="toggleMenu()">
+            <button class="hamburger" onclick="toggleMenu()">
                         <i class="burger"></i>
-                        <i class="close"></i></button> -->
+                        <i class="close"></i></button>
             <nav class="nav-container">
                 <ul class="main-menu clean-list flex" id="mainMenu">
-                    <li>
+                    <li onclick="toggleMenu()">
                         <a href="#image-container">create a meme</a>
                     </li>
-                    <li>
+                    <li onclick="toggleMenu()">
                         <a href="#about">about</a>
                     </li>
-                    <li>
+                    <li onclick="toggleMenu()">
                         <a href="#get-in-touch">get in touch</a>
                     </li>
 
@@ -49,7 +49,7 @@
         <div class="container useful-keywords-container"></div>
         <section id="image-container" class="container image-container"></section>
         <section id="about" class="about-container">
-            <div class="container flex">
+            <div class="container column flex">
                 <img class="profile-img" src="img/our-profile.jpg" alt="">
                 <div class="about-us">
                     <h1>
@@ -124,7 +124,7 @@
                 <a class="btn close" onclick="toggleModal()"><i class="fa fa-window-close-o"></i></a>
                 <form class="first-title">
                     <!-- <label for="title" placeholder="Type your text here"></label> -->
-                    <input type="text" placeholder="Type your text here" onkeyup="printTxt2Canvas(this, 0)" required class="text-to-add">
+                    <input type="text" placeholder="Type your text here" onkeyup="printTxt2Canvas(this, 0)" required class="text-to-add-1">
                     <div class="move-btns">
                         <label for="move">move text: </label>
                         <span class="arrow" onclick="moveText('xCoord', -1)"><i class="fa fa-chevron-circle-left"></i></span>
@@ -132,10 +132,20 @@
                         <span class="arrow" onclick="moveText('yCoord', -1)"><i class="fa fa-chevron-circle-up"></i></span>
                         <span class="arrow" onclick="moveText('yCoord', 1)"><i class="fa fa-chevron-circle-down"></i></span>
                     </div>
-                    
+                    <div class="text-align-btns">
+                        <label for="move">align text: </label>
+                        <span class="text-align" onclick="setTextAlign('left')"><i class="fa fa-align-left"></i></span>
+                        <span class="text-align" onclick="setTextAlign('center')"><i class="fa fa-align-center"></i></span>
+                        <span class="text-align" onclick="setTextAlign('right')"><i class="fa fa-align-right"></i></span>
+                    </div>
+                    <div class="text-shadow">
+                        <label for="move">text shadow: </label>
+                        <span class="shadow" onclick="toggleShadow(this)">T</span>
+
+                    </div>
                     <div class="pick-color flex">
                         <label for="move">Pick a color &nbsp;</label>
-                        <input class="color" placeholder="color" type="color" name="favcolor" onchange="changeColor(this)">
+                        <input class="color" placeholder="color" type="color" name="favcolor" value="#ffffff" onchange="changeColor(this)">
                     </div>
                     
                     <div class="font-style">
@@ -156,11 +166,11 @@
                         <input class="size" type="range" id="font-size" name="fontSize" min="8" max="100" value="20" onchange="showFontSize(this)"/>
                     </div>  
 
-                    <!-- <div>
+                    <div>
                         <label for="imgFiles">Select images:</label>
-                        <input class="file" type="file" id="imgFiles" name="imgFiles" onchange="handleImage(event)" />
-                    </div>  -->
-                    <input type="text" placeholder="Type your text here" onkeyup="printTxt2Canvas(this, 1)" required class="text-to-add">
+                        <input class="file" type="file" id="imgFiles" name="imgFiles" onchange="handleImage(event,this)" />
+                    </div> 
+                    <input type="text" placeholder="Type your text here" onkeyup="printTxt2Canvas(this, 1)" required class="text-to-add-2">
                     <!-- <div class="second-title">
                         <label for="title">second title</label>
                         <input type="text" placeholder="Your title is here"> Select a color:
